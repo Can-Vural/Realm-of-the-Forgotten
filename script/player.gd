@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var SPEED = 50
 var isPressed = false
 

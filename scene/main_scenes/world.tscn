@@ -1,22 +1,23 @@
-[gd_scene load_steps=18 format=4 uid="uid://df48hp42jc5nv"]
+[gd_scene load_steps=20 format=4 uid="uid://df48hp42jc5nv"]
 
-[ext_resource type="Texture2D" uid="uid://dv5yrnshlqhfq" path="res://art/road_cliff.png" id="1_jqecr"]
-[ext_resource type="Texture2D" uid="uid://oi4kcacisfeg" path="res://art/grass.png" id="2_4hy0y"]
-[ext_resource type="Texture2D" uid="uid://bvqmgnmmw5vn" path="res://art/decor_16x16.png" id="3_1x870"]
-[ext_resource type="Texture2D" uid="uid://esc20vnv10xx" path="res://art/tree_rock_bed.png" id="3_vnn0a"]
-[ext_resource type="PackedScene" uid="uid://vfr3lt8ivhhk" path="res://scene/player.tscn" id="4_erv0v"]
-[ext_resource type="PackedScene" uid="uid://cbpctbjdxvga" path="res://scene/enemy.tscn" id="5_1r4mn"]
-[ext_resource type="PackedScene" uid="uid://c1071rfplift0" path="res://scene/apple_hp.tscn" id="6_3xotf"]
+[ext_resource type="Texture2D" uid="uid://oi4kcacisfeg" path="res://art/grass.png" id="1_0pa8y"]
+[ext_resource type="Script" path="res://script/world.gd" id="1_qhiw5"]
+[ext_resource type="Texture2D" uid="uid://dv5yrnshlqhfq" path="res://art/road_cliff.png" id="2_82bnc"]
+[ext_resource type="Texture2D" uid="uid://bvqmgnmmw5vn" path="res://art/decor_16x16.png" id="3_wrq3a"]
+[ext_resource type="PackedScene" uid="uid://vfr3lt8ivhhk" path="res://scene/player.tscn" id="4_gu0wm"]
+[ext_resource type="PackedScene" uid="uid://cbpctbjdxvga" path="res://scene/enemy.tscn" id="5_467m0"]
+[ext_resource type="Texture2D" uid="uid://esc20vnv10xx" path="res://art/tree_rock_bed.png" id="6_4mxyt"]
+[ext_resource type="PackedScene" uid="uid://c1071rfplift0" path="res://scene/apple_hp.tscn" id="7_6sk5m"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6840o"]
-texture = ExtResource("2_4hy0y")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_glv5l"]
+texture = ExtResource("1_0pa8y")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_0v7g5"]
-sources/0 = SubResource("TileSetAtlasSource_6840o")
+sources/0 = SubResource("TileSetAtlasSource_glv5l")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y47m3"]
-texture = ExtResource("1_jqecr")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogbut"]
+texture = ExtResource("2_82bnc")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -39,10 +40,10 @@ texture = ExtResource("1_jqecr")
 5:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_14vuy"]
-sources/0 = SubResource("TileSetAtlasSource_y47m3")
+sources/0 = SubResource("TileSetAtlasSource_ogbut")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fm2be"]
-texture = ExtResource("1_jqecr")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t8jgp"]
+texture = ExtResource("2_82bnc")
 1:4/0 = 0
 1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.125, 3.75, -1.625, 1, 1.25, -4, 4.25, -3.625, 8, -4.875, 6.5, -2.125, 1.375, -2.125, -2.65703, 4.14564, -2.375, 8, -4.375, 8)
 1:5/0 = 0
@@ -69,10 +70,10 @@ texture = ExtResource("1_jqecr")
 
 [sub_resource type="TileSet" id="TileSet_rqe63"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_fm2be")
+sources/0 = SubResource("TileSetAtlasSource_t8jgp")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nytjf"]
-texture = ExtResource("3_1x870")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t0yim"]
+texture = ExtResource("3_wrq3a")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -83,10 +84,10 @@ texture = ExtResource("3_1x870")
 3:4/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_gi2tj"]
-sources/0 = SubResource("TileSetAtlasSource_nytjf")
+sources/0 = SubResource("TileSetAtlasSource_t0yim")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ti2ht"]
-texture = ExtResource("3_vnn0a")
+texture = ExtResource("6_4mxyt")
 0:5/size_in_atlas = Vector2i(3, 4)
 0:5/0 = 0
 0:5/0/y_sort_origin = 18
@@ -121,7 +122,11 @@ texture = ExtResource("3_vnn0a")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ti2ht")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0dls"]
+size = Vector2(39.5, 10.5)
+
 [node name="world" type="Node2D"]
+script = ExtResource("1_qhiw5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -149,10 +154,10 @@ tile_set = SubResource("TileSet_gi2tj")
 [node name="y_sort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="player" parent="y_sort" instance=ExtResource("4_erv0v")]
-position = Vector2(111, 114)
+[node name="player" parent="y_sort" instance=ExtResource("4_gu0wm")]
+position = Vector2(367, 36)
 
-[node name="enemy" parent="y_sort" instance=ExtResource("5_1r4mn")]
+[node name="enemy" parent="y_sort" instance=ExtResource("5_467m0")]
 position = Vector2(282, 99)
 
 [node name="tree_rock" type="TileMapLayer" parent="y_sort"]
@@ -160,5 +165,13 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAABAAYAAAAAAAUAAAAHAAsAAAAAAAUAAAARAAIAAAAAAAUAAAAZAA0AAAAAAAUAAAACAA0AAAAKAAcAAAARAA4AAAAKAAcAAAAQAAgAAAAAAAAAAAAJAAkAAAAAAAEAAAAaAAgAAAAAAAEAAAAOAAsAAAAGAAcAAAASAAgAAAAGAAcAAAALAAIAAAAAAAEAAAAAAAEAAAAIAAYAAAACAAEAAAAIAAYAAAAEAAEAAAAIAAYAAAAIAAQAAAAIAAYAAAAGAAIAAAAIAAYAAAANAAQAAAAKAAcAAAA=")
 tile_set = SubResource("TileSet_o08yo")
 
-[node name="apple_hp" parent="." instance=ExtResource("6_3xotf")]
+[node name="apple_hp" parent="." instance=ExtResource("7_6sk5m")]
 position = Vector2(128, 216)
+
+[node name="scene_trigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene_trigger"]
+position = Vector2(368.25, -14.25)
+shape = SubResource("RectangleShape2D_m0dls")
+
+[connection signal="body_entered" from="scene_trigger" to="." method="_on_scene_trigger_body_entered"]
