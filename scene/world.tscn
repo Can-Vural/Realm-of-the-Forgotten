@@ -123,6 +123,11 @@ sources/0 = SubResource("TileSetAtlasSource_ti2ht")
 
 [node name="world" type="Node2D"]
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 0, 349, 0, 348, -20, 389, -20, 388, 0, 464, 0, 464, 68, 487, 69, 488, 110, 464, 108, 464, 271, 187, 271, 189, 294, 146, 294, 146, 271, 1, 272, 0, -7, -8, -7, -5, 280, 141, 281, 142, 299, 195, 298, 193, 276, 469, 277, 468, 115, 494, 115, 493, 63, 468, 62, 468, -6, 393, -7, 394, -24, 342, -24, 342, -6, 0, -7)
+
 [node name="tilemaps" type="Node2D" parent="."]
 
 [node name="grass" type="TileMapLayer" parent="tilemaps"]
