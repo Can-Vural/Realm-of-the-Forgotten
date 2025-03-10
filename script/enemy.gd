@@ -12,6 +12,8 @@ var CAN_GET_DAMAGE = true
 
 func _physics_process(delta):
 	
+	update_health_bar()
+	
 	play_animation()
 	player_chase()
 	
@@ -94,3 +96,15 @@ func is_enemy_dead():
 func _on_death_animation_timeout():
 	$death_animation.stop()
 	self.queue_free()
+
+
+# Enemy Health Bar
+func update_health_bar():
+	var health_bar = $health_bar
+	
+	health_bar.value = HEALTH
+	
+	if HEALTH >= 100:
+		health_bar.visible = false
+	else:
+		health_bar.visible = true
