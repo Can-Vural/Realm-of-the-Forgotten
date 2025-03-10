@@ -1,6 +1,6 @@
 # Godot auto-generated and cache folders
 .godot/
-.import/
+*.import
 .editor/
 .editor_settings-*.tres
 .config/
