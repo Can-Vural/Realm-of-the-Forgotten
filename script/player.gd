@@ -11,6 +11,8 @@ var ANIMATION_PLAYING = false
 
 func _physics_process(delta):
 	
+	update_health_bar()
+	
 	current_camera()
 	
 	movement()
@@ -152,3 +154,15 @@ func current_camera():
 	elif global.CURRENT_SCENE == "cave":
 		$world_camera.enabled = false
 		$cave_camera.enabled = true
+
+
+# Player Health Bar
+func update_health_bar():
+	var health_bar = $health_bar
+	
+	health_bar.value = global.PLAYER_HEALTH
+	
+	if global.PLAYER_HEALTH >= 100:
+		health_bar.visible = false
+	else:
+		health_bar.visible = true
