@@ -8,6 +8,7 @@ func _process(delta):
 	change_scene()
 
 
+# Scene Change Functions
 func _on_scene_trigger_body_entered(body):
 	if body is Player:
 		global.PLAYER_ON_SCENE_TRIGGER = true
