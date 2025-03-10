@@ -16,4 +16,5 @@ func _on_scene_trigger_body_entered(body):
 func change_scene():
 	if global.PLAYER_ON_SCENE_TRIGGER:
 		get_tree().change_scene_to_file("res://scene/main_scenes/world.tscn")
+		global.CURRENT_SCENE = "world"
 		global.PLAYER_ON_SCENE_TRIGGER = false

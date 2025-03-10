@@ -11,6 +11,8 @@ var ANIMATION_PLAYING = false
 
 func _physics_process(delta):
 	
+	current_camera()
+	
 	movement()
 	play_animation()
 	
@@ -140,3 +142,13 @@ func _on_player_attack_cooldown_timeout():
 	
 	ANIMATION_PLAYING = false
 	global.PLAYER_IS_ATTACKING = false
+
+
+# Camera Change Function
+func current_camera():
+	if global.CURRENT_SCENE == "world":
+		$world_camera.enabled = true
+		$cave_camera.enabled = false
+	elif global.CURRENT_SCENE == "cave":
+		$world_camera.enabled = false
+		$cave_camera.enabled = true

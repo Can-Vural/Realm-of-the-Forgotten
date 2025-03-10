@@ -444,8 +444,19 @@ shape = SubResource("CapsuleShape2D_qs0r0")
 [node name="player_attack_cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="world_camera" type="Camera2D" parent="."]
 zoom = Vector2(3.5, 3.5)
+limit_left = 1
+limit_top = 1
+limit_right = 463
+limit_bottom = 265
+limit_smoothed = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="cave_camera" type="Camera2D" parent="."]
+zoom = Vector2(7, 7)
 limit_left = 1
 limit_top = 1
 limit_right = 463
