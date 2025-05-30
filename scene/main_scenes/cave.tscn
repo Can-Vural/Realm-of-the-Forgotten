@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://bcxsy1slmrif7"]
+[gd_scene load_steps=13 format=4 uid="uid://bcxsy1slmrif7"]
 
 [ext_resource type="Script" path="res://script/cave.gd" id="1_4yxlp"]
 [ext_resource type="Texture2D" uid="uid://dwa4xh2a8tdvc" path="res://art/road_cliff.png" id="1_wxtcn"]
 [ext_resource type="Texture2D" uid="uid://btdslsb2d2l7e" path="res://art/decor_16x16.png" id="2_7oeb1"]
 [ext_resource type="PackedScene" uid="uid://vfr3lt8ivhhk" path="res://scene/player.tscn" id="3_an3or"]
+[ext_resource type="PackedScene" uid="uid://dne2q7ypwnyul" path="res://scene/campfire.tscn" id="5_agkc6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1vye"]
 texture = ExtResource("1_wxtcn")
@@ -98,6 +99,10 @@ tile_set = SubResource("TileSet_gpcb6")
 
 [node name="player" parent="." instance=ExtResource("3_an3or")]
 position = Vector2(367, 17)
+
+[node name="campfire" parent="." instance=ExtResource("5_agkc6")]
+modulate = Color(1, 0.556863, 0.337255, 1)
+position = Vector2(222, 120)
 
 [node name="scene_trigger" type="Area2D" parent="."]
 

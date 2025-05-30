@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cp1pi46t7fp04" path="res://art/spr_campfire_burning.png" id="1_4whjs"]
 [ext_resource type="Script" path="res://script/campfire.gd" id="1_gpbko"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0k6x"]
+radius = 9.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n1i6f"]
 atlas = ExtResource("1_4whjs")
 region = Rect2(0, 0, 32, 64)
@@ -67,23 +70,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e0k6x"]
-radius = 9.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_6m2pr"]
 radius = 40.0
 
 [node name="campfire" type="CharacterBody2D"]
 script = ExtResource("1_gpbko")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e0k6x")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_7ofhy")
 animation = &"campfire_animation"
 offset = Vector2(0, -18)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_e0k6x")
 
 [node name="hitbox" type="Area2D" parent="."]
 
