@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dne2q7ypwnyul"]
+[gd_scene load_steps=16 format=3 uid="uid://dne2q7ypwnyul"]
 
 [ext_resource type="Texture2D" uid="uid://cp1pi46t7fp04" path="res://art/spr_campfire_burning.png" id="1_4whjs"]
 [ext_resource type="Script" path="res://script/campfire.gd" id="1_gpbko"]
@@ -73,6 +73,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6m2pr"]
 radius = 40.0
 
+[sub_resource type="Gradient" id="Gradient_1266b"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1k2e"]
+gradient = SubResource("Gradient_1266b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.894495, 0.211009)
+
 [node name="campfire" type="CharacterBody2D"]
 script = ExtResource("1_gpbko")
 
@@ -91,6 +100,11 @@ offset = Vector2(0, -18)
 shape = SubResource("CircleShape2D_6m2pr")
 
 [node name="increase_hp_cooldown" type="Timer" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.631373, 0.0745098, 0.152941, 1)
+energy = 3.59
+texture = SubResource("GradientTexture2D_y1k2e")
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
