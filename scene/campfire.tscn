@@ -3,9 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cp1pi46t7fp04" path="res://art/spr_campfire_burning.png" id="1_4whjs"]
 [ext_resource type="Script" path="res://script/campfire.gd" id="1_gpbko"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e0k6x"]
-radius = 9.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_n1i6f"]
 atlas = ExtResource("1_4whjs")
 region = Rect2(0, 0, 32, 64)
@@ -67,11 +64,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"campfire_animation",
-"speed": 5.0
+"speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0k6x"]
+radius = 8.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6m2pr"]
-radius = 40.0
+radius = 37.0135
 
 [sub_resource type="Gradient" id="Gradient_1266b"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -85,26 +85,28 @@ fill_to = Vector2(0.894495, 0.211009)
 [node name="campfire" type="CharacterBody2D"]
 script = ExtResource("1_gpbko")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_e0k6x")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
+position = Vector2(5.96046e-08, 7.10543e-15)
+scale = Vector2(0.703125, 0.657303)
 sprite_frames = SubResource("SpriteFrames_7ofhy")
 animation = &"campfire_animation"
 offset = Vector2(0, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e0k6x")
 
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_6m2pr")
 
-[node name="increase_hp_cooldown" type="Timer" parent="."]
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.631373, 0.0745098, 0.152941, 1)
 energy = 3.59
 texture = SubResource("GradientTexture2D_y1k2e")
+
+[node name="increase_hp_cooldown" type="Timer" parent="."]
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
