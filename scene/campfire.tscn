@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dne2q7ypwnyul"]
+[gd_scene load_steps=17 format=3 uid="uid://dne2q7ypwnyul"]
 
 [ext_resource type="Texture2D" uid="uid://cp1pi46t7fp04" path="res://art/spr_campfire_burning.png" id="1_4whjs"]
 [ext_resource type="Script" path="res://script/campfire.gd" id="1_gpbko"]
@@ -82,6 +82,10 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.894495, 0.211009)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cfkp"]
+radius = 11.5
+height = 23.0
+
 [node name="campfire" type="CharacterBody2D"]
 script = ExtResource("1_gpbko")
 
@@ -96,9 +100,9 @@ offset = Vector2(0, -18)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_e0k6x")
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="increase_hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+[node name="increase" type="CollisionShape2D" parent="increase_hitbox"]
 shape = SubResource("CircleShape2D_6m2pr")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
@@ -106,8 +110,20 @@ color = Color(0.631373, 0.0745098, 0.152941, 1)
 energy = 3.59
 texture = SubResource("GradientTexture2D_y1k2e")
 
-[node name="increase_hp_cooldown" type="Timer" parent="."]
+[node name="decrease_hitbox" type="Area2D" parent="."]
+position = Vector2(0.5, 0.5)
 
-[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[node name="decrease" type="CollisionShape2D" parent="decrease_hitbox"]
+shape = SubResource("CapsuleShape2D_3cfkp")
+
+[node name="increase_hp_cooldown" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="decrease_hp_cooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="increase_hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="increase_hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="body_entered" from="decrease_hitbox" to="." method="_on_decrease_hitbox_body_entered"]
+[connection signal="body_exited" from="decrease_hitbox" to="." method="_on_decrease_hitbox_body_exited"]
 [connection signal="timeout" from="increase_hp_cooldown" to="." method="_on_increase_hp_cooldown_timeout"]
+[connection signal="timeout" from="decrease_hp_cooldown" to="." method="_on_decrease_hp_cooldown_timeout"]
