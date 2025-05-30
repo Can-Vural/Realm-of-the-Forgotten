@@ -89,3 +89,9 @@ shape = SubResource("CircleShape2D_e0k6x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_6m2pr")
+
+[node name="increase_hp_cooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="increase_hp_cooldown" to="." method="_on_increase_hp_cooldown_timeout"]
