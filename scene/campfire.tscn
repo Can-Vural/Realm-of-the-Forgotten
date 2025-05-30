@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dne2q7ypwnyul"]
+
+[ext_resource type="Texture2D" uid="uid://cp1pi46t7fp04" path="res://art/spr_campfire_burning.png" id="1_4whjs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1i6f"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdlsx"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjrma"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xqtx"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y4ns"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t18oj"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qrnk"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d1pe"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ofhy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1i6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdlsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjrma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xqtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y4ns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t18oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qrnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d1pe")
+}],
+"loop": true,
+"name": &"campfire_animation",
+"speed": 5.0
+}]
+
+[node name="campfire" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+sprite_frames = SubResource("SpriteFrames_7ofhy")
+animation = &"campfire_animation"
