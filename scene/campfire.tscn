@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dne2q7ypwnyul"]
+[gd_scene load_steps=13 format=3 uid="uid://dne2q7ypwnyul"]
 
 [ext_resource type="Texture2D" uid="uid://cp1pi46t7fp04" path="res://art/spr_campfire_burning.png" id="1_4whjs"]
 
@@ -66,10 +66,24 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0k6x"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6m2pr"]
+radius = 40.0
+
 [node name="campfire" type="CharacterBody2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_7ofhy")
 animation = &"campfire_animation"
+offset = Vector2(0, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e0k6x")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_6m2pr")
