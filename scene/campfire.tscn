@@ -1,0 +1,129 @@
+[gd_scene load_steps=17 format=3 uid="uid://dne2q7ypwnyul"]
+
+[ext_resource type="Texture2D" uid="uid://cp1pi46t7fp04" path="res://art/spr_campfire_burning.png" id="1_4whjs"]
+[ext_resource type="Script" path="res://script/campfire.gd" id="1_gpbko"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1i6f"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdlsx"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjrma"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xqtx"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0y4ns"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t18oj"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qrnk"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d1pe"]
+atlas = ExtResource("1_4whjs")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ofhy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1i6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdlsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjrma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xqtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0y4ns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t18oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qrnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d1pe")
+}],
+"loop": true,
+"name": &"campfire_animation",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0k6x"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6m2pr"]
+radius = 37.0135
+
+[sub_resource type="Gradient" id="Gradient_1266b"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1k2e"]
+gradient = SubResource("Gradient_1266b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.894495, 0.211009)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cfkp"]
+radius = 11.5
+height = 23.0
+
+[node name="campfire" type="CharacterBody2D"]
+script = ExtResource("1_gpbko")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(5.96046e-08, 7.10543e-15)
+scale = Vector2(0.703125, 0.657303)
+sprite_frames = SubResource("SpriteFrames_7ofhy")
+animation = &"campfire_animation"
+offset = Vector2(0, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e0k6x")
+
+[node name="increase_hitbox" type="Area2D" parent="."]
+
+[node name="increase" type="CollisionShape2D" parent="increase_hitbox"]
+shape = SubResource("CircleShape2D_6m2pr")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.631373, 0.0745098, 0.152941, 1)
+energy = 3.59
+texture = SubResource("GradientTexture2D_y1k2e")
+
+[node name="decrease_hitbox" type="Area2D" parent="."]
+position = Vector2(0.5, 0.5)
+
+[node name="decrease" type="CollisionShape2D" parent="decrease_hitbox"]
+shape = SubResource("CapsuleShape2D_3cfkp")
+
+[node name="increase_hp_cooldown" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="decrease_hp_cooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="increase_hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="increase_hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="body_entered" from="decrease_hitbox" to="." method="_on_decrease_hitbox_body_entered"]
+[connection signal="body_exited" from="decrease_hitbox" to="." method="_on_decrease_hitbox_body_exited"]
+[connection signal="timeout" from="increase_hp_cooldown" to="." method="_on_increase_hp_cooldown_timeout"]
+[connection signal="timeout" from="decrease_hp_cooldown" to="." method="_on_decrease_hp_cooldown_timeout"]

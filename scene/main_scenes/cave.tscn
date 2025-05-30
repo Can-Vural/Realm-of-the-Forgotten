@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://bcxsy1slmrif7"]
+[gd_scene load_steps=13 format=4 uid="uid://bcxsy1slmrif7"]
 
 [ext_resource type="Script" path="res://script/cave.gd" id="1_4yxlp"]
 [ext_resource type="Texture2D" uid="uid://dwa4xh2a8tdvc" path="res://art/road_cliff.png" id="1_wxtcn"]
 [ext_resource type="Texture2D" uid="uid://btdslsb2d2l7e" path="res://art/decor_16x16.png" id="2_7oeb1"]
 [ext_resource type="PackedScene" uid="uid://vfr3lt8ivhhk" path="res://scene/player.tscn" id="3_an3or"]
+[ext_resource type="PackedScene" uid="uid://dne2q7ypwnyul" path="res://scene/campfire.tscn" id="5_agkc6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1vye"]
 texture = ExtResource("1_wxtcn")
@@ -79,6 +80,7 @@ sources/0 = SubResource("TileSetAtlasSource_082j5")
 size = Vector2(36, 12)
 
 [node name="cave" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_4yxlp")
 
 [node name="tilemaps" type="Node2D" parent="."]
@@ -95,6 +97,10 @@ tile_set = SubResource("TileSet_avbg8")
 [node name="decor" type="TileMapLayer" parent="tilemaps"]
 tile_map_data = PackedByteArray("AAAWAAAAAAAAAAQAAAAXAAIAAAAAAAQAAAAVAAUAAAAAAAQAAAARAAoAAAAAAAQAAAANAA4AAAAAAAQAAAAFAAwAAAAAAAQAAAAHAAQAAAAAAAQAAAACAAUAAAAAAAQAAAANAAMAAAAAAAQAAAAIAA4AAAACAAQAAAAOAAYAAAACAAQAAAAVAAcAAAACAAQAAAARAA0AAAADAAQAAAAOAAwAAAADAAQAAAAFAAgAAAADAAQAAAAXAAYAAAADAAQAAAAXAAsAAAADAAQAAAAYAAkAAAABAAQAAAAEAAMAAAABAAQAAAADAA4AAAABAAQAAAARAAcAAAABAAQAAAARAAEAAAABAAQAAAA=")
 tile_set = SubResource("TileSet_gpcb6")
+
+[node name="campfire" parent="." instance=ExtResource("5_agkc6")]
+modulate = Color(0.592157, 0.443137, 0.337255, 1)
+position = Vector2(222, 120)
 
 [node name="player" parent="." instance=ExtResource("3_an3or")]
 position = Vector2(367, 17)
