@@ -116,15 +116,21 @@ shape = SubResource("RectangleShape2D_5gaqa")
 script = ExtResource("6_kix7k")
 
 [node name="sp1" type="Marker2D" parent="spawn_points"]
+position = Vector2(386, 166)
 
 [node name="sp2" type="Marker2D" parent="spawn_points"]
+position = Vector2(271, 175)
 
 [node name="sp3" type="Marker2D" parent="spawn_points"]
+position = Vector2(161, 228)
 
 [node name="sp4" type="Marker2D" parent="spawn_points"]
+position = Vector2(83, 136)
 
 [node name="sp5" type="Marker2D" parent="spawn_points"]
+position = Vector2(239, 50)
 
 [node name="spawn_point_timer" type="Timer" parent="spawn_points"]
 
 [connection signal="body_entered" from="scene_trigger" to="." method="_on_scene_trigger_body_entered"]
+[connection signal="timeout" from="spawn_points/spawn_point_timer" to="spawn_points" method="_on_spawn_point_timer_timeout"]
