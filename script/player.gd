@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var SPEED = 50
 var isPressed = false
 
 var ENEMY_ATTACK_COOLDOWN = true
@@ -33,19 +32,19 @@ func movement():
 	if Input.is_action_pressed("ui_right"):
 		isPressed = true
 		global.PLAYER_CURRENT_DIRECTION = "right"
-		velocity.x = SPEED
+		velocity.x = global.PLAYER_SPEED
 	elif Input.is_action_pressed("ui_left"):
 		isPressed = true
 		global.PLAYER_CURRENT_DIRECTION = "left"
-		velocity.x = -SPEED
+		velocity.x = -global.PLAYER_SPEED
 	elif Input.is_action_pressed("ui_up"):
 		isPressed = true
 		global.PLAYER_CURRENT_DIRECTION = "up"
-		velocity.y = -SPEED
+		velocity.y = -global.PLAYER_SPEED
 	elif Input.is_action_pressed("ui_down"):
 		isPressed = true
 		global.PLAYER_CURRENT_DIRECTION = "down"
-		velocity.y = SPEED
+		velocity.y = global.PLAYER_SPEED
 	else:
 		isPressed = false
 		velocity.x = 0

@@ -18,3 +18,5 @@ func change_scene():
 		get_tree().change_scene_to_file("res://scene/main_scenes/world.tscn")
 		global.CURRENT_SCENE = "world"
 		global.PLAYER_ON_SCENE_TRIGGER = false
+		
+		global.PLAYER_SPEED = 45
