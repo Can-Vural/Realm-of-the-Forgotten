@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dpkdk3ypboqec" path="res://art/decor_16x16.png" id="2_7oeb1"]
 [ext_resource type="PackedScene" uid="uid://vfr3lt8ivhhk" path="res://scene/player.tscn" id="3_an3or"]
 [ext_resource type="PackedScene" uid="uid://dne2q7ypwnyul" path="res://scene/campfire.tscn" id="5_agkc6"]
-[ext_resource type="Script" path="res://scene/main_scenes/spawn_points.gd" id="6_kix7k"]
+[ext_resource type="Script" path="res://script/spawn_points.gd" id="6_kix7k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1vye"]
 texture = ExtResource("1_wxtcn")
