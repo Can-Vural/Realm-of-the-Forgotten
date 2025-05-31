@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://bcxsy1slmrif7"]
+[gd_scene load_steps=14 format=4 uid="uid://bcxsy1slmrif7"]
 
 [ext_resource type="Script" path="res://script/cave.gd" id="1_4yxlp"]
-[ext_resource type="Texture2D" uid="uid://dwa4xh2a8tdvc" path="res://art/road_cliff.png" id="1_wxtcn"]
-[ext_resource type="Texture2D" uid="uid://btdslsb2d2l7e" path="res://art/decor_16x16.png" id="2_7oeb1"]
+[ext_resource type="Texture2D" uid="uid://ctfyeeyoa8vxb" path="res://art/road_cliff.png" id="1_wxtcn"]
+[ext_resource type="Texture2D" uid="uid://dpkdk3ypboqec" path="res://art/decor_16x16.png" id="2_7oeb1"]
 [ext_resource type="PackedScene" uid="uid://vfr3lt8ivhhk" path="res://scene/player.tscn" id="3_an3or"]
 [ext_resource type="PackedScene" uid="uid://dne2q7ypwnyul" path="res://scene/campfire.tscn" id="5_agkc6"]
+[ext_resource type="Script" path="res://scene/main_scenes/spawn_points.gd" id="6_kix7k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1vye"]
 texture = ExtResource("1_wxtcn")
@@ -110,5 +111,20 @@ position = Vector2(367, 17)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene_trigger"]
 position = Vector2(368, -6)
 shape = SubResource("RectangleShape2D_5gaqa")
+
+[node name="spawn_points" type="Node2D" parent="."]
+script = ExtResource("6_kix7k")
+
+[node name="sp1" type="Marker2D" parent="spawn_points"]
+
+[node name="sp2" type="Marker2D" parent="spawn_points"]
+
+[node name="sp3" type="Marker2D" parent="spawn_points"]
+
+[node name="sp4" type="Marker2D" parent="spawn_points"]
+
+[node name="sp5" type="Marker2D" parent="spawn_points"]
+
+[node name="spawn_point_timer" type="Timer" parent="spawn_points"]
 
 [connection signal="body_entered" from="scene_trigger" to="." method="_on_scene_trigger_body_entered"]
