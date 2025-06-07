@@ -176,21 +176,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"key_idle",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5f6bo"]
-radius = 4.0
+radius = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yk12f"]
-radius = 9.05539
+radius = 4.0
 
 [node name="chest_key" type="CharacterBody2D"]
 script = ExtResource("1_sxw6t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.5, 5.96046e-08)
-scale = Vector2(0.46875, 0.4375)
+modulate = Color(0.539591, 0.524269, 0, 1)
+position = Vector2(5.96046e-08, 0)
+scale = Vector2(0.226563, 0.21875)
 sprite_frames = SubResource("SpriteFrames_1svcn")
 animation = &"key_idle"
 
@@ -198,8 +199,10 @@ animation = &"key_idle"
 shape = SubResource("CircleShape2D_5f6bo")
 
 [node name="hitbox" type="Area2D" parent="."]
+position = Vector2(0, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_yk12f")
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

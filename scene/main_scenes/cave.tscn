@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=4 uid="uid://bcxsy1slmrif7"]
+[gd_scene load_steps=15 format=4 uid="uid://bcxsy1slmrif7"]
 
 [ext_resource type="Script" path="res://script/cave.gd" id="1_4yxlp"]
-[ext_resource type="Texture2D" uid="uid://ctfyeeyoa8vxb" path="res://art/road_cliff.png" id="1_wxtcn"]
-[ext_resource type="Texture2D" uid="uid://dpkdk3ypboqec" path="res://art/decor_16x16.png" id="2_7oeb1"]
+[ext_resource type="Texture2D" uid="uid://6kj8qnx63ff8" path="res://art/road_cliff.png" id="1_wxtcn"]
+[ext_resource type="Texture2D" uid="uid://cx7ly3b6po8lw" path="res://art/decor_16x16.png" id="2_7oeb1"]
 [ext_resource type="PackedScene" uid="uid://vfr3lt8ivhhk" path="res://scene/player.tscn" id="3_an3or"]
 [ext_resource type="PackedScene" uid="uid://dne2q7ypwnyul" path="res://scene/campfire.tscn" id="5_agkc6"]
 [ext_resource type="Script" path="res://script/spawn_points.gd" id="6_kix7k"]
+[ext_resource type="PackedScene" uid="uid://cntlq0mj03ed4" path="res://scene/chest.tscn" id="7_v4t30"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1vye"]
 texture = ExtResource("1_wxtcn")
@@ -131,6 +132,9 @@ position = Vector2(83, 136)
 position = Vector2(239, 50)
 
 [node name="spawn_point_timer" type="Timer" parent="spawn_points"]
+
+[node name="chest" parent="." instance=ExtResource("7_v4t30")]
+position = Vector2(54, 193)
 
 [connection signal="body_entered" from="scene_trigger" to="." method="_on_scene_trigger_body_entered"]
 [connection signal="timeout" from="spawn_points/spawn_point_timer" to="spawn_points" method="_on_spawn_point_timer_timeout"]
