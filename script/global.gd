@@ -9,3 +9,5 @@ var PLAYER_IS_ATTACKING = false
 var PLAYER_CURRENT_DIRECTION = "down"
 
 var PLAYER_ON_SCENE_TRIGGER = false
+
+var CAVE_CHEST_KEY_TAKEN = false
