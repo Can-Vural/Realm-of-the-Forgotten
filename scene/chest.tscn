@@ -121,3 +121,7 @@ shape = SubResource("RectangleShape2D_whloq")
 shape = SubResource("CircleShape2D_beidk")
 
 [node name="animation_timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="animation_timer" to="." method="_on_animation_timer_timeout"]
