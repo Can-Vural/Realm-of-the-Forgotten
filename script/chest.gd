@@ -5,6 +5,9 @@ extends CharacterBody2D
 var PLAYER_IN_RANGE = false
 var CHEST_OPENED = false
 
+func _ready():
+	$AnimatedSprite2D.play("chest_idle")
+
 func _physics_process(delta):
 	open()
 
@@ -26,7 +29,8 @@ func open():
 			
 			if green_gem_scene:
 				var green_gem = green_gem_scene.instantiate()
-				var spawn_position = global_position + Vector2.DOWN * 25
+				var spawn_position = global_position + Vector2.DOWN * 15
+				green_gem.global_position = spawn_position
 				get_parent().add_child(green_gem)
 
 func opened():

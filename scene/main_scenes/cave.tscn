@@ -107,6 +107,9 @@ position = Vector2(222, 120)
 [node name="player" parent="." instance=ExtResource("3_an3or")]
 position = Vector2(367, 17)
 
+[node name="chest" parent="." instance=ExtResource("7_v4t30")]
+position = Vector2(54, 192)
+
 [node name="scene_trigger" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene_trigger"]
@@ -132,9 +135,6 @@ position = Vector2(83, 136)
 position = Vector2(239, 50)
 
 [node name="spawn_point_timer" type="Timer" parent="spawn_points"]
-
-[node name="chest" parent="." instance=ExtResource("7_v4t30")]
-position = Vector2(54, 193)
 
 [connection signal="body_entered" from="scene_trigger" to="." method="_on_scene_trigger_body_entered"]
 [connection signal="timeout" from="spawn_points/spawn_point_timer" to="spawn_points" method="_on_spawn_point_timer_timeout"]

@@ -99,31 +99,33 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whloq"]
-size = Vector2(14.5, 5.75)
+size = Vector2(18, 8.4375)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_beidk"]
-radius = 22.0227
+radius = 20.0
 
 [node name="chest" type="CharacterBody2D"]
 script = ExtResource("1_47p3k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.525, 0.475)
+position = Vector2(0.781249, -0.0312507)
+scale = Vector2(0.560937, 0.651563)
 sprite_frames = SubResource("SpriteFrames_67cpq")
-animation = &"chest_opened"
+animation = &"chest_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(1, 3.78125)
 shape = SubResource("RectangleShape2D_whloq")
 
 [node name="hitbox" type="Area2D" parent="."]
 position = Vector2(-1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(1, 0)
+position = Vector2(1, 1)
 shape = SubResource("CircleShape2D_beidk")
 
 [node name="animation_timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
